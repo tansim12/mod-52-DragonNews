@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../../Shared/Navbar/Navbar";
 import LoginWith from "../../Components/LoginWithG_F/LoginWith";
 import { useAuthContext } from "../../Components/Hooks/useAuthContext";
@@ -10,6 +10,7 @@ const Login = () => {
   const navigate = useNavigate();
   const patten = /[A-Z]/;
   const emailRef = useRef(null);
+  const location = useLocation();
 
   // handleLogin
   const handleLogin = (e) => {
@@ -28,7 +29,7 @@ const Login = () => {
     login(email, password)
       .then(() => {
         toast.success("Login Successfully");
-        navigate("/");
+        navigate(location?.state ? location?.state : "/");
       })
       .catch(() => toast.error("User invalid"));
   };

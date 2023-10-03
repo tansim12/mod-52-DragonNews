@@ -1,5 +1,6 @@
 import toast from "react-hot-toast";
 import { useAuthContext } from "../Hooks/useAuthContext";
+import swal from "sweetalert";
 
 const EmailVerification = () => {
   const { emailVerification } = useAuthContext();
@@ -7,6 +8,8 @@ const EmailVerification = () => {
   const handleEmailVerification = () => {
     emailVerification()
       .then(() => {
+        swal("Good job!", "You clicked the button!", "success");
+
         toast.success("Please check your email");
       })
       .catch((err) => {

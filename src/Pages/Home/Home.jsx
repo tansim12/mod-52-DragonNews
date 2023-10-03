@@ -11,20 +11,19 @@ const Home = () => {
     <div>
       <Logo></Logo>
       <div className="my-5">
-      <BrakingNewsMarquee></BrakingNewsMarquee>
+        <BrakingNewsMarquee></BrakingNewsMarquee>
       </div>
       <Navbar></Navbar>
 
-
       {/* LeftSideNav , RightSideNav , MiddleSideNews */}
       <div className="grid grid-cols-1  md:grid-cols-4 gap-5 ">
-        <div className="border">
+        <div className="">
           <LeftSideNav></LeftSideNav>
         </div>
-        <div className="md:col-span-2 border h-[100vh]  overflow-y-scroll ">
-         <MiddleSideNews></MiddleSideNews>
+        <div className="md:col-span-2  h-[100vh]  overflow-y-scroll ">
+          <MiddleSideNews></MiddleSideNews>
         </div>
-        <div className=" col-span-1 border">
+        <div className=" col-span-1">
           <RightSideNav></RightSideNav>
         </div>
       </div>

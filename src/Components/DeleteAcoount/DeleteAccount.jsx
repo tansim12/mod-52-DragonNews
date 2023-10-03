@@ -11,7 +11,7 @@ const DeleteAccount = () => {
     deleteAccount()
       .then(() => {
         if (isDelete) {
-          toast.success("Your Account has been deleted successfully.", {
+           toast.success("Your Account has been deleted successfully.", {
             style: {
               borderRadius: "10px",
               background: "#333",
@@ -19,9 +19,12 @@ const DeleteAccount = () => {
             },
           });
         }
+        if (!isDelete) {
+          return 
+        }
       })
       .catch(() => {
-        const reLoggedIn = confirm("Please reLogin and Deleted this account");
+        const reLoggedIn = confirm("Please re-login and deleted this account");
         {
           reLoggedIn && navigate("/login");
         }
