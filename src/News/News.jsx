@@ -16,9 +16,9 @@ const News = () => {
     fetchNews();
   }, []);
   return (
-    <div>
-      {news.map((item) => (
-        <NewsDiv key={item?._id} item={item}></NewsDiv>
+    <div className="">
+      {news.map((newsDetails) => (
+        <NewsDiv key={newsDetails?._id} newsDetails={newsDetails}></NewsDiv>
       ))}
     </div>
   );

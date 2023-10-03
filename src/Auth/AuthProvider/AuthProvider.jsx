@@ -82,7 +82,6 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  console.log(user);
 
   const info = {
     googleLogin,
@@ -95,6 +94,7 @@ const AuthProvider = ({ children }) => {
     profileUpdate,
     deleteAccount,
     emailVerification,
+    loading,
   };
   return (
     <div>
