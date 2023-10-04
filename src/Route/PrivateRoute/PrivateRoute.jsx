@@ -1,9 +1,10 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useAuthContext } from "../../Components/Hooks/useAuthContext";
 import { Vortex } from "react-loader-spinner";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuthContext();
+  const location = useLocation();
   if (loading) {
     return (
       <div className="flex justify-center min-h-[30vh] items-center">
@@ -23,7 +24,7 @@ const PrivateRoute = ({ children }) => {
     );
   }
   if (!user?.accessToken) {
-    return <Navigate to={"/login"}></Navigate>;
+    return <Navigate to={"/login"} state={location?.pathname}></Navigate>;
   }
 
   return children;

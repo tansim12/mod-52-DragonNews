@@ -1,4 +1,5 @@
 import {
+  FacebookAuthProvider,
   GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -30,6 +31,12 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, githubProvider);
   };
+
+  // facebookLogin
+  const facebookProvider = new FacebookAuthProvider()
+  const facebookLogin =()=>{
+    return signInWithPopup(auth , facebookProvider)
+  } 
 
   //   create user in  register
   const createUser = (email, password) => {
@@ -93,7 +100,7 @@ const AuthProvider = ({ children }) => {
     forgotPassword,
     profileUpdate,
     deleteAccount,
-    emailVerification,
+    emailVerification,facebookLogin,
     loading,
   };
   return (

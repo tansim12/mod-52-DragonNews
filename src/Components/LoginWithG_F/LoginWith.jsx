@@ -3,11 +3,12 @@ import FacebookLogin from "../../Components/Login Types/FacebookLogin";
 import GithubLogin from "../../Components/Login Types/GithubLogin";
 import GoogleLogin from "../../Components/Login Types/GoogleLogin";
 import { useAuthContext } from "../Hooks/useAuthContext";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const LoginWith = () => {
+  const location = useLocation();
   const navigate = useNavigate();
-  const { googleLogin, githubLogin } = useAuthContext();
+  const { googleLogin, githubLogin, facebookLogin } = useAuthContext();
 
   const handleLogin = (media) => {
     media()
@@ -19,7 +20,7 @@ const LoginWith = () => {
             color: "#fff",
           },
         });
-        navigate("/");
+        navigate(location?.state ? location?.state : "/");
       })
       .catch((err) => toast.error(err.message));
   };
@@ -31,7 +32,10 @@ const LoginWith = () => {
       >
         <GoogleLogin></GoogleLogin>
       </div>
-      <div className="my-3 hover:cursor-pointer">
+      <div
+        onClick={() => handleLogin(facebookLogin)}
+        className="my-3 hover:cursor-pointer"
+      >
         <FacebookLogin></FacebookLogin>
       </div>
       <div
